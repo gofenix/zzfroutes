@@ -1539,7 +1539,7 @@ class NewV2exRouteState extends State<NewV2exRoute>
         controller: _tabController,
         children: [
           Container(
-            alignment: Alignment.centerLeft,
+            alignment: Alignment.center,
             child: FutureBuilder(
               future: () async {
                 return _dio.get("https://cnodejs.org/api/v1/topics");
