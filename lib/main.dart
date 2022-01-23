@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'eventbus.dart';
 
 void main() {
   runApp(MyApp());
@@ -52,6 +53,19 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    bus.on("_velocity", (arg) {
+      print(arg);
+      print("---------------");
+      setState(() {
+        _counter = 9999999;
+      });
+    });
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -191,6 +205,38 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return NewTabBarRoute();
+                }));
+              },
+            ),
+            TextButton(
+              child: Text("打开WillPopScope路由"),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return NewPopScopeRoute();
+                }));
+              },
+            ),
+            TextButton(
+              child: Text("打开Theme路由"),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return NewThemeRoute();
+                }));
+              },
+            ),
+            TextButton(
+              child: Text("打开Dialog路由"),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return NewDialogRoute();
+                }));
+              },
+            ),
+            TextButton(
+              child: Text("打开手势路由"),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return NewGestureRoute();
                 }));
               },
             ),
@@ -822,5 +868,226 @@ class NewTabBarRouteState extends State<NewTabBarRoute>
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+}
+
+class NewPopScopeRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return NewPopScopeRouteState();
+  }
+}
+
+class NewPopScopeRouteState extends State<NewPopScopeRoute> {
+  DateTime? _lastPressedAt;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("导航返回拦截"),
+      ),
+      body: WillPopScope(
+        onWillPop: () async {
+          if (_lastPressedAt == null ||
+              DateTime.now().difference(_lastPressedAt!) >
+                  Duration(seconds: 1)) {
+            _lastPressedAt = DateTime.now();
+            return false;
+          }
+          return true;
+        },
+        child: Container(
+          alignment: Alignment.center,
+          child: Text("1秒内连续按两次返回键退出"),
+        ),
+      ),
+    );
+  }
+}
+
+class NewThemeRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return NewThemeRouteState();
+  }
+}
+
+class NewThemeRouteState extends State<NewThemeRoute> {
+  var _themeColor = Colors.teal;
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    var themeData = Theme.of(context);
+
+    return Theme(
+        data: ThemeData(
+            primarySwatch: _themeColor,
+            iconTheme: IconThemeData(color: _themeColor)),
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text("主题换色"),
+          ),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.favorite),
+                  Icon(Icons.airport_shuttle),
+                  Text("  颜色跟随主题")
+                ],
+              ),
+              Theme(
+                data: themeData.copyWith(
+                  iconTheme: themeData.iconTheme.copyWith(color: Colors.black),
+                ),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(Icons.favorite),
+                      Icon(Icons.airport_shuttle),
+                      Text("  颜色固定黑色")
+                    ]),
+              ),
+            ],
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                _themeColor =
+                    _themeColor == Colors.teal ? Colors.blue : Colors.teal;
+              });
+            },
+            child: Icon(Icons.palette),
+          ),
+        ));
+  }
+}
+
+class NewDialogRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("对话框"),
+      ),
+      body: Column(
+        children: [
+          ElevatedButton(
+              onPressed: () async {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text("提示"),
+                        content: Text("你确定要。。。？"),
+                        actions: [
+                          TextButton(
+                            child: Text("取消"),
+                            onPressed: () =>
+                                Navigator.of(context).pop(), // 关闭对话框
+                          ),
+                          TextButton(
+                            child: Text("删除"),
+                            onPressed: () {
+                              //关闭对话框并返回true
+                              Navigator.of(context).pop(true);
+                            },
+                          ),
+                        ],
+                      );
+                    });
+              },
+              child: Text("打开"))
+        ],
+      ),
+    );
+  }
+}
+
+class NewGestureRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return NewGestureRouteState();
+  }
+}
+
+class NewGestureRouteState extends State<NewGestureRoute> {
+  var _operation = "no gesture detected";
+
+  double _top = 100;
+  double _left = 100;
+
+  var homeCounter = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("手势识别demo"),
+      ),
+      body: Stack(children: [
+        Positioned(
+          top: 200,
+          left: 300,
+          child: GestureDetector(
+            child: Container(
+              alignment: Alignment.center,
+              color: Colors.blue,
+              width: 200,
+              height: 100,
+              child: Text(
+                _operation,
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            onTap: () {
+              setState(() {
+                _operation = "单击";
+              });
+            },
+            onDoubleTap: () {
+              setState(() {
+                _operation = "双击";
+              });
+            },
+            onLongPress: () {
+              setState(() {
+                _operation = "长按";
+              });
+            },
+          ),
+        ),
+        Positioned(
+          top: _top,
+          left: _left,
+          child: GestureDetector(
+            child: CircleAvatar(
+              child: Text("$homeCounter"),
+            ),
+            onPanDown: (e) {
+              print("用户手指按下: ${e.globalPosition}");
+            },
+            onPanUpdate: (e) {
+              setState(() {
+                _left += e.delta.dx;
+                _top += e.delta.dy;
+              });
+            },
+            onPanEnd: (e) {
+              print(e.velocity);
+              bus.emit("_velocity", e.velocity);
+            },
+          ),
+        ),
+      ]),
+    );
   }
 }
