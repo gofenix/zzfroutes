@@ -1,7 +1,11 @@
-import 'dart:developer';
+import 'dart:convert';
+import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'eventbus.dart';
 
 void main() {
@@ -92,155 +96,283 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+      body: Scrollbar(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.0),
+          child: Center(
+            // Center is a layout widget. It takes a single child and positions it
+            // in the middle of the parent.
+            child: Column(
+              // Column is also a layout widget. It takes a list of children and
+              // arranges them vertically. By default, it sizes itself to fit its
+              // children horizontally, and tries to be as tall as its parent.
+              //
+              // Invoke "debug painting" (press "p" in the console, choose the
+              // "Toggle Debug Paint" action from the Flutter Inspector in Android
+              // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+              // to see the wireframe for each widget.
+              //
+              // Column has various properties to control how it sizes itself and
+              // how it positions its children. Here we use mainAxisAlignment to
+              // center the children vertically; the main axis here is the vertical
+              // axis because Columns are vertical (the cross axis would be
+              // horizontal).
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'You have pushed the button this many times:',
+                ),
+                Text(
+                  '$_counter',
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+                // antoher
+                TextButton(
+                  child: Text("打开Text路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewTextRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开Button路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewButtonRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开Image路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewImageRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开Switch路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewSwitchRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开Form路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewFormRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开Scaffold路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewScaffoldRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开ListView路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewListViewRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开ScrollNotification路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewScrollNotificationRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开GridView路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewGridRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开PageView路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewPageRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开TabBarView路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewTabBarRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开WillPopScope路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewPopScopeRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开Theme路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewThemeRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开Dialog路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewDialogRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开手势路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewGestureRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开File操作路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewFileRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开Http路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewHttpRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开Dio路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewDioRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开DioFutureBuilder路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewDioFutureBuilderRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开url launcher路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewURLRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开V2EX路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewV2exRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开手势路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewGestureRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开手势路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewGestureRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开手势路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewGestureRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开手势路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewGestureRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开手势路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewGestureRoute();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: Text("打开手势路由"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewGestureRoute();
+                    }));
+                  },
+                ),
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            // antoher
-            TextButton(
-              child: Text("打开Text路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewTextRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("打开Button路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewButtonRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("打开Image路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewImageRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("打开Switch路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewSwitchRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("打开Form路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewFormRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("打开Scaffold路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewScaffoldRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("打开ListView路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewListViewRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("打开ScrollNotification路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewScrollNotificationRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("打开GridView路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewGridRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("打开PageView路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewPageRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("打开TabBarView路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewTabBarRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("打开WillPopScope路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewPopScopeRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("打开Theme路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewThemeRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("打开Dialog路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewDialogRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("打开手势路由"),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewGestureRoute();
-                }));
-              },
-            ),
-          ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -1036,7 +1168,7 @@ class NewGestureRouteState extends State<NewGestureRoute> {
       body: Stack(children: [
         Positioned(
           top: 200,
-          left: 300,
+          left: 100,
           child: GestureDetector(
             child: Container(
               alignment: Alignment.center,
@@ -1088,6 +1220,360 @@ class NewGestureRouteState extends State<NewGestureRoute> {
           ),
         ),
       ]),
+    );
+  }
+}
+
+class NewFileRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return NewFileRouteState();
+  }
+}
+
+class NewFileRouteState extends State<NewFileRoute> {
+  int _counter = 0;
+
+  @override
+  initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _readCounter().then((value) {
+      setState(() {
+        _counter = value;
+      });
+    });
+  }
+
+  Future<File> _getLocalFile() async {
+    String dir = (await getApplicationDocumentsDirectory()).path;
+    return File('$dir/counter.txt');
+  }
+
+  Future<int> _readCounter() async {
+    try {
+      File file = await _getLocalFile();
+      // 读取点击次数（以字符串）
+      String contents = await file.readAsString();
+      return int.parse(contents);
+    } on FileSystemException {
+      return 0;
+    }
+  }
+
+  _incrementCounter() async {
+    setState(() {
+      _counter++;
+    });
+
+    // 将点击次数以字符串类型写到文件中
+    await (await _getLocalFile()).writeAsString('$_counter');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("file演示demo"),
+      ),
+      body: Center(
+        child: Text('点击了 $_counter 次'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class NewHttpRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return NewHttpRouteState();
+  }
+}
+
+class NewHttpRouteState extends State<NewHttpRoute> {
+  bool _loading = false;
+  String _text = "";
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("HTTP演示"),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ElevatedButton(
+                onPressed: () async {
+                  setState(() {
+                    _loading = true;
+                    _text = "正在请求中";
+                  });
+
+                  try {
+                    //创建一个HttpClient
+                    HttpClient httpClient = HttpClient();
+                    //打开Http连接
+                    HttpClientRequest request = await httpClient
+                        .getUrl(Uri.parse("https://www.baidu.com"));
+                    //使用iPhone的UA
+                    request.headers.add(
+                      "user-agent",
+                      "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1",
+                    );
+                    //等待连接服务器（会将请求信息发送给服务器）
+                    HttpClientResponse response = await request.close();
+                    //读取响应内容
+                    _text = await response.transform(utf8.decoder).join();
+                    //输出响应头
+                    print(response.headers);
+
+                    //关闭client后，通过该client发起的所有请求都会中止。
+                    httpClient.close();
+                  } catch (e) {
+                    print(e);
+                    _text = "请求失败";
+                  } finally {
+                    setState(() {
+                      _loading = false;
+                    });
+                  }
+                },
+                child: Text("获取baidu首页Html")),
+            Container(
+              width: MediaQuery.of(context).size.width - 50,
+              child: Text(_text.replaceAll(RegExp(r"\s"), "")),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class NewDioRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return NewDioRouteState();
+  }
+}
+
+class NewDioRouteState extends State<NewDioRoute> {
+  bool _loading = false;
+  String _text = "";
+
+  final _dio = Dio();
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("HTTP演示"),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ElevatedButton(
+                onPressed: () async {
+                  setState(() {
+                    _loading = true;
+                    _text = "正在请求中";
+                  });
+
+                  try {
+                    var res = await _dio
+                        .get("https://api.github.com/orgs/flutterchina/repos");
+                    await Future.delayed(Duration(seconds: 2));
+                    _text = res.data.toString();
+                  } catch (e) {
+                    print(e);
+                    _text = "请求失败";
+                  } finally {
+                    setState(() {
+                      _loading = false;
+                    });
+                  }
+                },
+                child: Text("获取Github数据")),
+            Container(
+              width: MediaQuery.of(context).size.width - 50,
+              child: Text(_text.replaceAll(RegExp(r"\s"), "")),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class NewDioFutureBuilderRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return NewDioFutureBuilderRouteState();
+  }
+}
+
+class NewDioFutureBuilderRouteState extends State<NewDioFutureBuilderRoute> {
+  final _dio = Dio();
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("github repos"),
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        child: FutureBuilder(
+          future: _getGithubData(),
+          builder: (context, AsyncSnapshot snapshot) {
+            //请求完成
+            if (snapshot.connectionState == ConnectionState.done) {
+              Response response = snapshot.data;
+              //发生错误
+              if (snapshot.hasError) {
+                return Text(snapshot.error.toString());
+              }
+              //请求成功，通过项目信息构建用于显示项目名称的ListView
+              return ListView(
+                children: response.data
+                    .map<Widget>((e) => ListTile(title: Text(e["full_name"])))
+                    .toList(),
+              );
+            } else {
+              //请求未完成时弹出loading
+              return CircularProgressIndicator();
+            }
+          },
+        ),
+      ),
+    );
+  }
+
+  Future<Response> _getGithubData() async {
+    await Future.delayed(Duration(seconds: 3));
+    return _dio.get("https://api.github.com/orgs/flutterchina/repos");
+  }
+}
+
+class NewURLRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return NewURLRouteState();
+  }
+}
+
+class NewURLRouteState extends State<NewURLRoute> {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("打开url"),
+      ),
+      body: ListView(
+        children: [
+          TextButton(
+              onPressed: () async {
+                await launch("https://www.baidu.com");
+              },
+              child: Text("打开baidu")),
+          TextButton(
+              onPressed: () async {
+                await launch("https://www.google.com");
+              },
+              child: Text("打开google"))
+        ],
+      ),
+    );
+  }
+}
+
+class NewV2exRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return NewV2exRouteState();
+  }
+}
+
+class NewV2exRouteState extends State<NewV2exRoute>
+    with SingleTickerProviderStateMixin {
+  final _dio = Dio();
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    setState(() {
+      _tabController = TabController(length: 2, vsync: this);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("V2EX"),
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: ["最热", "最新"].map((e) => Tab(text: e)).toList(),
+        ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          Container(
+            alignment: Alignment.centerLeft,
+            child: FutureBuilder(
+              future: () async {
+                return _dio.get("https://cnodejs.org/api/v1/topics");
+              }(),
+              builder: (context, AsyncSnapshot snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  Response resp = snapshot.data;
+                  //发生错误
+                  if (snapshot.hasError) {
+                    return Text(snapshot.error.toString());
+                  }
+
+                  return ListView(
+                    children: resp.data["data"].map<Widget>((e) {
+                      return TextButton(
+                          onPressed: () {
+                            var url = "https://cnodejs.org/topic/${e["id"]}";
+                            launch(url);
+                          },
+                          child: Text(e["title"]));
+                    }).toList(),
+                  );
+                } else {
+                  return CircularProgressIndicator();
+                }
+              },
+            ),
+          ),
+          Container(
+            alignment: Alignment.center,
+            child: Text("v2ex不支持跨域，还在处理中"),
+          )
+        ],
+      ),
     );
   }
 }
