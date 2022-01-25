@@ -38,6 +38,8 @@ dependencies:
   path_provider: any
   dio: any
   url_launcher: any
+  wechat_camera_picker: any
+  flutter_sound_lite: ^8.5.0
 
 dev_dependencies:
   flutter_test:
