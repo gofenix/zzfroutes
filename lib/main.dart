@@ -9,6 +9,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'eventbus.dart';
 import 'package:wechat_camera_picker/wechat_camera_picker.dart';
+import 'package:geolocator/geolocator.dart';
 
 void main() {
   runApp(MyApp());
@@ -328,11 +329,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开手势路由"),
+                  child: Text("打开地理位置路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return NewGestureRoute();
+                      return NewGeoRoute();
                     }));
                   },
                 ),
@@ -1641,6 +1642,89 @@ class NewPictureRouteState extends State<NewPictureRoute> {
         },
         tooltip: "拍照",
         child: Icon(Icons.camera),
+      ),
+    );
+  }
+}
+
+class NewGeoRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return NewGeoRouteState();
+  }
+}
+
+class NewGeoRouteState extends State<NewGeoRoute> {
+  String _pos = "";
+
+  Future<Position> _determinLocation() async {
+    await Future.delayed(Duration(seconds: 1));
+
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error("location services are disabled");
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _determinLocation().then((value) {
+      setState(() {
+        _pos = value.toString();
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("地理位置演示"),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            () {
+              if (_pos == "") {
+                return CircularProgressIndicator();
+              } else {
+                return Text("当前位置是：$_pos");
+              }
+            }(),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          setState(() {
+            _pos = "";
+          });
+          var local = await _determinLocation();
+          setState(() {
+            _pos = local.toString();
+          });
+        },
+        child: Icon(Icons.location_city),
       ),
     );
   }
