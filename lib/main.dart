@@ -16,7 +16,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -101,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Scrollbar(
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Center(
             // Center is a layout widget. It takes a single child and positions it
             // in the middle of the parent.
@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
               // horizontal).
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
+                const Text(
                   'You have pushed the button this many times:',
                 ),
                 Text(
@@ -131,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 // antoher
                 TextButton(
-                  child: Text("打开Text路由"),
+                  child: const Text("打开Text路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开Button路由"),
+                  child: const Text("打开Button路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -149,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开Image路由"),
+                  child: const Text("打开Image路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -158,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开Switch路由"),
+                  child: const Text("打开Switch路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -167,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开Form路由"),
+                  child: const Text("打开Form路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -176,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开Scaffold路由"),
+                  child: const Text("打开Scaffold路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -185,7 +185,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开ListView路由"),
+                  child: const Text("打开ListView路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -194,7 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开ScrollNotification路由"),
+                  child: const Text("打开ScrollNotification路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -203,7 +203,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开GridView路由"),
+                  child: const Text("打开GridView路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -212,7 +212,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开PageView路由"),
+                  child: const Text("打开PageView路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -221,7 +221,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开TabBarView路由"),
+                  child: const Text("打开TabBarView路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -230,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开WillPopScope路由"),
+                  child: const Text("打开WillPopScope路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -239,7 +239,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开Theme路由"),
+                  child: const Text("打开Theme路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -248,7 +248,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开Dialog路由"),
+                  child: const Text("打开Dialog路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -257,7 +257,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开手势路由"),
+                  child: const Text("打开手势路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -266,7 +266,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开File操作路由"),
+                  child: const Text("打开File操作路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -275,7 +275,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开Http路由"),
+                  child: const Text("打开Http路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -284,7 +284,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开Dio路由"),
+                  child: const Text("打开Dio路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -293,7 +293,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开DioFutureBuilder路由"),
+                  child: const Text("打开DioFutureBuilder路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -302,7 +302,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开url launcher路由"),
+                  child: const Text("打开url launcher路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -311,7 +311,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开V2EX路由"),
+                  child: const Text("打开V2EX路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -320,7 +320,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开照相机路由"),
+                  child: const Text("打开照相机路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -329,7 +329,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开地理位置路由"),
+                  child: const Text("打开地理位置路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -338,7 +338,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开手势路由"),
+                  child: const Text("打开手势路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -347,7 +347,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开手势路由"),
+                  child: const Text("打开手势路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -356,7 +356,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开手势路由"),
+                  child: const Text("打开手势路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -365,7 +365,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: Text("打开手势路由"),
+                  child: const Text("打开手势路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -381,7 +381,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
@@ -392,12 +392,12 @@ class NewTextRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("新路由"),
+        title: const Text("新路由"),
       ),
       body: Center(
         child: Column(
           children: [
-            Text(
+            const Text(
               "hahah",
               textAlign: TextAlign.left,
             ),
@@ -406,7 +406,7 @@ class NewTextRoute extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
-            Text(
+            const Text(
               "Hello world",
               textScaleFactor: 2,
             )
@@ -421,15 +421,17 @@ class NewButtonRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("button演示")),
+      appBar: AppBar(title: const Text("button演示")),
       body: Center(
         child: Column(
           children: [
-            ElevatedButton(onPressed: () => {}, child: Text("normal")),
-            TextButton(onPressed: () {}, child: Text("hello world")),
-            IconButton(onPressed: () {}, icon: Icon(Icons.thumb_up)),
+            ElevatedButton(onPressed: () => {}, child: const Text("normal")),
+            TextButton(onPressed: () {}, child: const Text("hello world")),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.thumb_up)),
             ElevatedButton.icon(
-                onPressed: () {}, icon: Icon(Icons.send), label: Text("发送"))
+                onPressed: () {},
+                icon: const Icon(Icons.send),
+                label: const Text("发送"))
           ],
         ),
       ),
@@ -441,11 +443,11 @@ class NewImageRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Image演示")),
+      appBar: AppBar(title: const Text("Image演示")),
       body: Center(
         child: Column(
           children: [
-            Image(
+            const Image(
               image: AssetImage("images/podcast.jpeg"),
               width: 100.0,
             ),
@@ -453,7 +455,7 @@ class NewImageRoute extends StatelessWidget {
               "images/avatar.jpeg",
               width: 100.0,
             ),
-            Image(
+            const Image(
               image: NetworkImage(
                   "https://avatars2.githubusercontent.com/u/20411648?s=460&v=4"),
               width: 100.0,
@@ -484,7 +486,7 @@ class NewSwitchRouteState extends State<NewSwitchRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Switch Checkbox演示"),
+          title: const Text("Switch Checkbox演示"),
         ),
         body: Column(
           children: [
@@ -516,22 +518,22 @@ class NewFormRoute extends StatefulWidget {
 }
 
 class NewFormRouteState extends State<NewFormRoute> {
-  TextEditingController _unameController = TextEditingController();
-  TextEditingController _pwdController = TextEditingController();
+  final TextEditingController _unameController = TextEditingController();
+  final TextEditingController _pwdController = TextEditingController();
 
-  GlobalKey _formKey = GlobalKey<FormState>();
+  final GlobalKey _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("表单演示"),
+        title: const Text("表单演示"),
       ),
       body: Column(
         children: [
           TextField(
             autofocus: true,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: "用户名",
               hintText: "用户名或邮箱",
               prefixIcon: Icon(Icons.person),
@@ -540,7 +542,7 @@ class NewFormRouteState extends State<NewFormRoute> {
               print("用户onchange $value");
             },
           ),
-          TextField(
+          const TextField(
             decoration: InputDecoration(
               labelText: "密码",
               hintText: "您的登录密码",
@@ -556,18 +558,18 @@ class NewFormRouteState extends State<NewFormRoute> {
                 TextFormField(
                   autofocus: true,
                   controller: _unameController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: "用户名",
                     hintText: "用户名或邮箱",
                     icon: Icon(Icons.person),
                   ),
                   validator: (v) {
-                    return v!.trim().length > 0 ? null : "用户名不能为空";
+                    return v!.trim().isNotEmpty ? null : "用户名不能为空";
                   },
                 ),
                 TextFormField(
                   controller: _pwdController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: "密码",
                     hintText: "您的登录密码",
                     icon: Icon(Icons.lock),
@@ -578,12 +580,12 @@ class NewFormRouteState extends State<NewFormRoute> {
                   },
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 20.0),
+                  padding: const EdgeInsets.only(top: 20.0),
                   child: Row(
                     children: [
                       Expanded(
                           child: ElevatedButton(
-                        child: Padding(
+                        child: const Padding(
                           padding: EdgeInsets.all(16.0),
                           child: Text("登录"),
                         ),
@@ -596,7 +598,7 @@ class NewFormRouteState extends State<NewFormRoute> {
                                 MaterialPageRoute(builder: (context) {
                               return Scaffold(
                                 appBar: AppBar(
-                                  title: Text("login ok"),
+                                  title: const Text("login ok"),
                                 ),
                                 body: Column(
                                   children: [
@@ -604,13 +606,13 @@ class NewFormRouteState extends State<NewFormRoute> {
                                     Text(_pwdController.value.text),
                                     LinearProgressIndicator(
                                       backgroundColor: Colors.grey[200],
-                                      valueColor:
-                                          AlwaysStoppedAnimation(Colors.blue),
+                                      valueColor: const AlwaysStoppedAnimation(
+                                          Colors.blue),
                                     ),
                                     LinearProgressIndicator(
                                       backgroundColor: Colors.grey[200],
-                                      valueColor:
-                                          AlwaysStoppedAnimation(Colors.blue),
+                                      valueColor: const AlwaysStoppedAnimation(
+                                          Colors.blue),
                                       value: .5,
                                     )
                                   ],
@@ -646,31 +648,30 @@ class NewScaffoldRouteState extends State<NewScaffoldRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Name APP"),
+        title: const Text("Name APP"),
         leading: Builder(
           builder: (context) {
             return IconButton(
                 onPressed: () {
                   Scaffold.of(context).openDrawer();
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.dashboard,
                   color: Colors.white,
                 ));
           },
         ),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.share))],
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.share))],
       ),
       drawer: MyDrawer(),
       body: Column(
-        children: [],
+        children: const [],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("家庭")),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.business), title: Text("商务")),
-          BottomNavigationBarItem(icon: Icon(Icons.school), title: Text("学校")),
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "家庭"),
+          BottomNavigationBarItem(icon: Icon(Icons.business), label: "商务"),
+          BottomNavigationBarItem(icon: Icon(Icons.school), label: "学校"),
         ],
         currentIndex: _selectedIndex,
         fixedColor: Colors.blue,
@@ -695,18 +696,18 @@ class MyDrawer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(top: 38.0),
+                padding: const EdgeInsets.only(top: 38.0),
                 child: Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: ClipOval(
                           child: Image.asset(
                         "images/podlink.png",
                         width: 100.0,
                       )),
                     ),
-                    Text(
+                    const Text(
                       "Fenix",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     )
@@ -715,7 +716,7 @@ class MyDrawer extends StatelessWidget {
               ),
               Expanded(
                   child: ListView(
-                children: [
+                children: const [
                   ListTile(
                     leading: Icon(Icons.add),
                     title: Text("添加账号"),
@@ -741,7 +742,7 @@ class NewListViewRoute extends StatefulWidget {
 
 class NewListViewRouteState extends State<NewListViewRoute> {
   static const loadingTag = "##加载中##";
-  var _words = [loadingTag];
+  final _words = [loadingTag];
 
   @override
   void initState() {
@@ -753,7 +754,7 @@ class NewListViewRouteState extends State<NewListViewRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("列表演示"),
+        title: const Text("列表演示"),
       ),
       body: ListView.separated(
         itemCount: _words.length,
@@ -763,9 +764,9 @@ class NewListViewRouteState extends State<NewListViewRoute> {
               _retriveData();
 
               return Container(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 alignment: Alignment.center,
-                child: SizedBox(
+                child: const SizedBox(
                   width: 24.0,
                   height: 24.0,
                   child: CircularProgressIndicator(
@@ -776,8 +777,8 @@ class NewListViewRouteState extends State<NewListViewRoute> {
             } else {
               return Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.all(16.0),
-                child: Text(
+                padding: const EdgeInsets.all(16.0),
+                child: const Text(
                   "没有更多了",
                   style: TextStyle(color: Colors.grey),
                 ),
@@ -789,7 +790,7 @@ class NewListViewRouteState extends State<NewListViewRoute> {
           );
         },
         separatorBuilder: (context, index) {
-          return Divider(
+          return const Divider(
             height: .0,
           );
         },
@@ -798,7 +799,7 @@ class NewListViewRouteState extends State<NewListViewRoute> {
   }
 
   void _retriveData() {
-    Future.delayed(Duration(seconds: 2)).then((e) {
+    Future.delayed(const Duration(seconds: 2)).then((e) {
       setState(() {
         _words.insertAll(_words.length - 1,
             generateWordPairs().take(20).map((e) => e.asPascalCase).toList());
@@ -821,7 +822,7 @@ class NewScrollNotificationRouteState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("滚动监听演示"),
+        title: const Text("滚动监听演示"),
       ),
       body: Scrollbar(
         child: NotificationListener<ScrollNotification>(
@@ -867,7 +868,7 @@ class NewGridRoute extends StatefulWidget {
 }
 
 class NewGridRouteState extends State<NewGridRoute> {
-  var _icons = [];
+  final _icons = [];
 
   @override
   void initState() {
@@ -879,10 +880,10 @@ class NewGridRouteState extends State<NewGridRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("网格演示"),
+        title: const Text("网格演示"),
       ),
       body: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3, childAspectRatio: 1.0),
           itemCount: _icons.length,
           itemBuilder: (context, index) {
@@ -895,7 +896,7 @@ class NewGridRouteState extends State<NewGridRoute> {
   }
 
   void _retriveData() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     setState(() {
       _icons.addAll([
         Icons.ac_unit,
@@ -910,7 +911,7 @@ class NewGridRouteState extends State<NewGridRoute> {
 }
 
 class Page extends StatefulWidget {
-  Page({Key? key, required this.text}) : super(key: key);
+  const Page({Key? key, required this.text}) : super(key: key);
 
   final String text;
 
@@ -944,7 +945,7 @@ class NewPageRoute extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("PageView演示"),
+          title: const Text("PageView演示"),
         ),
         body: PageView(
           scrollDirection: Axis.vertical,
@@ -974,7 +975,7 @@ class NewTabBarRouteState extends State<NewTabBarRoute>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("App Name TabBar View"),
+        title: const Text("App Name TabBar View"),
         bottom: TabBar(
           controller: _tabController,
           tabs: tabs
@@ -1020,13 +1021,13 @@ class NewPopScopeRouteState extends State<NewPopScopeRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("导航返回拦截"),
+        title: const Text("导航返回拦截"),
       ),
       body: WillPopScope(
         onWillPop: () async {
           if (_lastPressedAt == null ||
               DateTime.now().difference(_lastPressedAt!) >
-                  Duration(seconds: 1)) {
+                  const Duration(seconds: 1)) {
             _lastPressedAt = DateTime.now();
             return false;
           }
@@ -1034,7 +1035,7 @@ class NewPopScopeRouteState extends State<NewPopScopeRoute> {
         },
         child: Container(
           alignment: Alignment.center,
-          child: Text("1秒内连续按两次返回键退出"),
+          child: const Text("1秒内连续按两次返回键退出"),
         ),
       ),
     );
@@ -1063,14 +1064,14 @@ class NewThemeRouteState extends State<NewThemeRoute> {
             iconTheme: IconThemeData(color: _themeColor)),
         child: Scaffold(
           appBar: AppBar(
-            title: Text("主题换色"),
+            title: const Text("主题换色"),
           ),
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Icon(Icons.favorite),
                   Icon(Icons.airport_shuttle),
                   Text("  颜色跟随主题")
@@ -1082,7 +1083,7 @@ class NewThemeRouteState extends State<NewThemeRoute> {
                 ),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
+                    children: const <Widget>[
                       Icon(Icons.favorite),
                       Icon(Icons.airport_shuttle),
                       Text("  颜色固定黑色")
@@ -1097,7 +1098,7 @@ class NewThemeRouteState extends State<NewThemeRoute> {
                     _themeColor == Colors.teal ? Colors.blue : Colors.teal;
               });
             },
-            child: Icon(Icons.palette),
+            child: const Icon(Icons.palette),
           ),
         ));
   }
@@ -1109,7 +1110,7 @@ class NewDialogRoute extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("对话框"),
+        title: const Text("对话框"),
       ),
       body: Column(
         children: [
@@ -1119,16 +1120,16 @@ class NewDialogRoute extends StatelessWidget {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        title: Text("提示"),
-                        content: Text("你确定要。。。？"),
+                        title: const Text("提示"),
+                        content: const Text("你确定要。。。？"),
                         actions: [
                           TextButton(
-                            child: Text("取消"),
+                            child: const Text("取消"),
                             onPressed: () =>
                                 Navigator.of(context).pop(), // 关闭对话框
                           ),
                           TextButton(
-                            child: Text("删除"),
+                            child: const Text("删除"),
                             onPressed: () {
                               //关闭对话框并返回true
                               Navigator.of(context).pop(true);
@@ -1138,7 +1139,7 @@ class NewDialogRoute extends StatelessWidget {
                       );
                     });
               },
-              child: Text("打开"))
+              child: const Text("打开"))
         ],
       ),
     );
@@ -1166,7 +1167,7 @@ class NewGestureRouteState extends State<NewGestureRoute> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("手势识别demo"),
+        title: const Text("手势识别demo"),
       ),
       body: Stack(children: [
         Positioned(
@@ -1180,7 +1181,7 @@ class NewGestureRouteState extends State<NewGestureRoute> {
               height: 100,
               child: Text(
                 _operation,
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
               ),
             ),
             onTap: () {
@@ -1280,7 +1281,7 @@ class NewFileRouteState extends State<NewFileRoute> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("file演示demo"),
+        title: const Text("file演示demo"),
       ),
       body: Center(
         child: Text('点击了 $_counter 次'),
@@ -1288,7 +1289,7 @@ class NewFileRouteState extends State<NewFileRoute> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -1311,7 +1312,7 @@ class NewHttpRouteState extends State<NewHttpRoute> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("HTTP演示"),
+        title: const Text("HTTP演示"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -1352,8 +1353,8 @@ class NewHttpRouteState extends State<NewHttpRoute> {
                     });
                   }
                 },
-                child: Text("获取baidu首页Html")),
-            Container(
+                child: const Text("获取baidu首页Html")),
+            SizedBox(
               width: MediaQuery.of(context).size.width - 50,
               child: Text(_text.replaceAll(RegExp(r"\s"), "")),
             )
@@ -1383,7 +1384,7 @@ class NewDioRouteState extends State<NewDioRoute> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("HTTP演示"),
+        title: const Text("HTTP演示"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -1398,7 +1399,7 @@ class NewDioRouteState extends State<NewDioRoute> {
                   try {
                     var res = await _dio
                         .get("https://api.github.com/orgs/flutterchina/repos");
-                    await Future.delayed(Duration(seconds: 2));
+                    await Future.delayed(const Duration(seconds: 2));
                     _text = res.data.toString();
                   } catch (e) {
                     print(e);
@@ -1409,8 +1410,8 @@ class NewDioRouteState extends State<NewDioRoute> {
                     });
                   }
                 },
-                child: Text("获取Github数据")),
-            Container(
+                child: const Text("获取Github数据")),
+            SizedBox(
               width: MediaQuery.of(context).size.width - 50,
               child: Text(_text.replaceAll(RegExp(r"\s"), "")),
             )
@@ -1437,7 +1438,7 @@ class NewDioFutureBuilderRouteState extends State<NewDioFutureBuilderRoute> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("github repos"),
+        title: const Text("github repos"),
       ),
       body: Container(
         alignment: Alignment.center,
@@ -1459,7 +1460,7 @@ class NewDioFutureBuilderRouteState extends State<NewDioFutureBuilderRoute> {
               );
             } else {
               //请求未完成时弹出loading
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             }
           },
         ),
@@ -1468,7 +1469,7 @@ class NewDioFutureBuilderRouteState extends State<NewDioFutureBuilderRoute> {
   }
 
   Future<Response> _getGithubData() async {
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
     return _dio.get("https://api.github.com/orgs/flutterchina/repos");
   }
 }
@@ -1487,7 +1488,7 @@ class NewURLRouteState extends State<NewURLRoute> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("打开url"),
+        title: const Text("打开url"),
       ),
       body: ListView(
         children: [
@@ -1495,12 +1496,12 @@ class NewURLRouteState extends State<NewURLRoute> {
               onPressed: () async {
                 await launch("https://www.baidu.com");
               },
-              child: Text("打开baidu")),
+              child: const Text("打开baidu")),
           TextButton(
               onPressed: () async {
                 await launch("https://www.google.com");
               },
-              child: Text("打开google"))
+              child: const Text("打开google"))
         ],
       ),
     );
@@ -1532,7 +1533,7 @@ class NewV2exRouteState extends State<NewV2exRoute>
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("V2EX"),
+        title: const Text("V2EX"),
         bottom: TabBar(
           controller: _tabController,
           tabs: ["最热", "最新"].map((e) => Tab(text: e)).toList(),
@@ -1566,14 +1567,14 @@ class NewV2exRouteState extends State<NewV2exRoute>
                     }).toList(),
                   );
                 } else {
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 }
               },
             ),
           ),
           Container(
             alignment: Alignment.center,
-            child: Text("v2ex不支持跨域，还在处理中"),
+            child: const Text("v2ex不支持跨域，还在处理中"),
           )
         ],
       ),
@@ -1624,7 +1625,7 @@ class NewPictureRouteState extends State<NewPictureRoute> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("摄像演示demo"),
+        title: const Text("摄像演示demo"),
       ),
       body: Stack(
         children: <Widget>[
@@ -1641,7 +1642,7 @@ class NewPictureRouteState extends State<NewPictureRoute> {
           pick(context);
         },
         tooltip: "拍照",
-        child: Icon(Icons.camera),
+        child: const Icon(Icons.camera),
       ),
     );
   }
@@ -1658,7 +1659,7 @@ class NewGeoRouteState extends State<NewGeoRoute> {
   String _pos = "";
 
   Future<Position> _determinLocation() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
 
     bool serviceEnabled;
     LocationPermission permission;
@@ -1699,14 +1700,14 @@ class NewGeoRouteState extends State<NewGeoRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("地理位置演示"),
+        title: const Text("地理位置演示"),
       ),
       body: Center(
         child: Column(
           children: [
             () {
               if (_pos == "") {
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               } else {
                 return Text("当前位置是：$_pos");
               }
@@ -1724,7 +1725,7 @@ class NewGeoRouteState extends State<NewGeoRoute> {
             _pos = local.toString();
           });
         },
-        child: Icon(Icons.location_city),
+        child: const Icon(Icons.location_city),
       ),
     );
   }
