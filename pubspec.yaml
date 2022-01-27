@@ -39,7 +39,6 @@ dependencies:
   dio: any
   url_launcher: any
   wechat_camera_picker: any
-  flutter_sound_lite: ^8.5.0
   geolocator: ^8.0.4
 
 dev_dependencies:
