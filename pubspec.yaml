@@ -39,7 +39,9 @@ dependencies:
   dio: any
   url_launcher: any
   wechat_camera_picker: any
-  geolocator: ^8.0.4
+  geolocator: any
+  battery_plus: any
+  device_info_plus: any
 
 dev_dependencies:
   flutter_test:

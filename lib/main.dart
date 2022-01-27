@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:english_words/english_words.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -338,11 +340,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: const Text("打开手势路由"),
+                  child: const Text("打开设备信息路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return NewGestureRoute();
+                      return NewDeviceRoute();
                     }));
                   },
                 ),
@@ -1726,6 +1728,119 @@ class NewGeoRouteState extends State<NewGeoRoute> {
           });
         },
         child: const Icon(Icons.location_city),
+      ),
+    );
+  }
+}
+
+class NewDeviceRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return NewDeviceRouteState();
+  }
+}
+
+class NewDeviceRouteState extends State<NewDeviceRoute> {
+  final _deviceInfo = DeviceInfoPlugin();
+  Map<String, dynamic> _deviceData = <String, dynamic>{};
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initPlatformState();
+  }
+
+  Future<void> initPlatformState() async {
+    var deviceData = <String, dynamic>{};
+
+    if (kIsWeb) {
+      deviceData = _readWebBrowserInfo(await _deviceInfo.webBrowserInfo);
+    } else {
+      if (Platform.isIOS) {
+        deviceData = _readIosDeviceInfo(await _deviceInfo.iosInfo);
+      }
+    }
+
+    if (!mounted) return;
+
+    setState(() {
+      _deviceData = deviceData;
+    });
+  }
+
+  Map<String, dynamic> _readIosDeviceInfo(IosDeviceInfo data) {
+    return <String, dynamic>{
+      'name': data.name,
+      'systemName': data.systemName,
+      'systemVersion': data.systemVersion,
+      'model': data.model,
+      'localizedModel': data.localizedModel,
+      'identifierForVendor': data.identifierForVendor,
+      'isPhysicalDevice': data.isPhysicalDevice,
+      'utsname.sysname:': data.utsname.sysname,
+      'utsname.nodename:': data.utsname.nodename,
+      'utsname.release:': data.utsname.release,
+      'utsname.version:': data.utsname.version,
+      'utsname.machine:': data.utsname.machine,
+    };
+  }
+
+  Map<String, dynamic> _readWebBrowserInfo(WebBrowserInfo data) {
+    return <String, dynamic>{
+      'browserName': describeEnum(data.browserName),
+      'appCodeName': data.appCodeName,
+      'appName': data.appName,
+      'appVersion': data.appVersion,
+      'deviceMemory': data.deviceMemory,
+      'language': data.language,
+      'languages': data.languages,
+      'platform': data.platform,
+      'product': data.product,
+      'productSub': data.productSub,
+      'userAgent': data.userAgent,
+      'vendor': data.vendor,
+      'vendorSub': data.vendorSub,
+      'hardwareConcurrency': data.hardwareConcurrency,
+      'maxTouchPoints': data.maxTouchPoints,
+    };
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("设备信息演示"),
+      ),
+      body: ListView(
+        children: _deviceData.keys.map(
+          (String property) {
+            return Row(
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    property,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Expanded(
+                    child: Container(
+                  padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                  child: Text(
+                    '${_deviceData[property]}',
+                    maxLines: 10,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                )),
+              ],
+            );
+          },
+        ).toList(),
       ),
     );
   }
