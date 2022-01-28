@@ -1,7 +1,9 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:battery_plus/battery_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:english_words/english_words.dart';
@@ -349,11 +351,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  child: const Text("打开手势路由"),
+                  child: const Text("打开电池路由"),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return NewGestureRoute();
+                      return NewBatteryRoute();
                     }));
                   },
                 ),
@@ -1842,6 +1844,101 @@ class NewDeviceRouteState extends State<NewDeviceRoute> {
           },
         ).toList(),
       ),
+    );
+  }
+}
+
+class NewBatteryRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return NewBatteryRouteState();
+  }
+}
+
+class NewBatteryRouteState extends State<NewBatteryRoute> {
+  final battery = Battery();
+  StreamSubscription<BatteryState>? _batteryStateSubscription;
+
+  String _state = "";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _batteryStateSubscription;
+    _batteryStateSubscription =
+        battery.onBatteryStateChanged.listen((BatteryState state) {
+      setState(() {
+        _state = state.toString();
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("电池demo"),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: () async {
+                final level = await battery.batteryLevel;
+
+                showDialog(
+                    context: context,
+                    builder: (_) {
+                      return AlertDialog(
+                        content: Text("当前电量：$level"),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text("OK"),
+                          )
+                        ],
+                      );
+                    });
+              },
+              child: Text("当前电量"),
+            ),
+            Text("当前电池模式：$_state"),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _batteryStateSubscription?.cancel();
+  }
+}
+
+class NewSoundRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return NewSoundRouteState();
+  }
+}
+
+class NewSoundRouteState extends State<NewSoundRoute> {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("声音演示demo"),
+      ),
+      body: ,
     );
   }
 }
