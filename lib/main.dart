@@ -11,6 +11,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:zzfroutes/widgets/another.dart';
 import 'eventbus.dart';
 import 'package:wechat_camera_picker/wechat_camera_picker.dart';
 import 'package:geolocator/geolocator.dart';
@@ -39,7 +40,10 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: DefaultTabController(
+        child: MyHomePage(title: 'Flutter Demo Home Page'),
+        length: 2,
+      ),
     );
   }
 }
@@ -102,285 +106,316 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        bottom: TabBar(
+          tabs: [
+            Tab(child: Text("基础")),
+            Tab(child: Text("其他")),
+          ],
+        ),
       ),
-      body: Scrollbar(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
-          child: Center(
-            // Center is a layout widget. It takes a single child and positions it
-            // in the middle of the parent.
-            child: Column(
-              // Column is also a layout widget. It takes a list of children and
-              // arranges them vertically. By default, it sizes itself to fit its
-              // children horizontally, and tries to be as tall as its parent.
-              //
-              // Invoke "debug painting" (press "p" in the console, choose the
-              // "Toggle Debug Paint" action from the Flutter Inspector in Android
-              // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-              // to see the wireframe for each widget.
-              //
-              // Column has various properties to control how it sizes itself and
-              // how it positions its children. Here we use mainAxisAlignment to
-              // center the children vertically; the main axis here is the vertical
-              // axis because Columns are vertical (the cross axis would be
-              // horizontal).
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text(
-                  'You have pushed the button this many times:',
+      body: TabBarView(
+        children: [
+          Scrollbar(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(16.0),
+              child: Center(
+                // Center is a layout widget. It takes a single child and positions it
+                // in the middle of the parent.
+                child: Column(
+                  // Column is also a layout widget. It takes a list of children and
+                  // arranges them vertically. By default, it sizes itself to fit its
+                  // children horizontally, and tries to be as tall as its parent.
+                  //
+                  // Invoke "debug painting" (press "p" in the console, choose the
+                  // "Toggle Debug Paint" action from the Flutter Inspector in Android
+                  // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+                  // to see the wireframe for each widget.
+                  //
+                  // Column has various properties to control how it sizes itself and
+                  // how it positions its children. Here we use mainAxisAlignment to
+                  // center the children vertically; the main axis here is the vertical
+                  // axis because Columns are vertical (the cross axis would be
+                  // horizontal).
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text(
+                      'You have pushed the button this many times:',
+                    ),
+                    Text(
+                      '$_counter',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                    // antoher
+                    TextButton(
+                      child: const Text("打开Text路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewTextRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开Button路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewButtonRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开Image路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewImageRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开Switch路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewSwitchRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开Form路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewFormRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开Scaffold路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewScaffoldRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开ListView路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewListViewRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开ScrollNotification路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewScrollNotificationRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开GridView路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewGridRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开PageView路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewPageRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开TabBarView路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewTabBarRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开WillPopScope路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewPopScopeRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开Theme路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewThemeRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开Dialog路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewDialogRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开手势路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewGestureRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开File操作路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewFileRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开Http路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewHttpRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开Dio路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewDioRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开DioFutureBuilder路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewDioFutureBuilderRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开url launcher路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewURLRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开V2EX路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewV2exRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开照相机路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewPictureRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开地理位置路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewGeoRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开设备信息路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewDeviceRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开电池路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewBatteryRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开手势路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewGestureRoute();
+                        }));
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("打开手势路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewGestureRoute();
+                        }));
+                      },
+                    ),
+                  ],
                 ),
-                Text(
-                  '$_counter',
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-                // antoher
-                TextButton(
-                  child: const Text("打开Text路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewTextRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开Button路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewButtonRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开Image路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewImageRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开Switch路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewSwitchRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开Form路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewFormRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开Scaffold路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewScaffoldRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开ListView路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewListViewRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开ScrollNotification路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewScrollNotificationRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开GridView路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewGridRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开PageView路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewPageRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开TabBarView路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewTabBarRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开WillPopScope路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewPopScopeRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开Theme路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewThemeRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开Dialog路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewDialogRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开手势路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewGestureRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开File操作路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewFileRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开Http路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewHttpRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开Dio路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewDioRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开DioFutureBuilder路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewDioFutureBuilderRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开url launcher路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewURLRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开V2EX路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewV2exRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开照相机路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewPictureRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开地理位置路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewGeoRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开设备信息路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewDeviceRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开电池路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewBatteryRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开手势路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewGestureRoute();
-                    }));
-                  },
-                ),
-                TextButton(
-                  child: const Text("打开手势路由"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewGestureRoute();
-                    }));
-                  },
-                ),
-              ],
+              ),
             ),
           ),
-        ),
+          Scrollbar(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(16.0),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      child: const Text("打开图片卡片路由"),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return NewImageCardRoute();
+                        }));
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
@@ -467,6 +502,10 @@ class NewImageRoute extends StatelessWidget {
             Image.network(
               "https://avatars2.githubusercontent.com/u/20411648?s=460&v=4",
               width: 100.0,
+            ),
+            Image.network(
+              "https://n.sinaimg.cn/tech/transform/308/w140h168/20220128/1ff1-937906687cb6dffd34511151258efb8c.gif",
+              width: 100,
             )
           ],
         ),
@@ -888,7 +927,7 @@ class NewGridRouteState extends State<NewGridRoute> {
       ),
       body: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3, childAspectRatio: 1.0),
+              crossAxisCount: 2, childAspectRatio: 1.0),
           itemCount: _icons.length,
           itemBuilder: (context, index) {
             if (index == _icons.length - 1 && _icons.length < 200) {
@@ -1540,7 +1579,7 @@ class NewV2exRouteState extends State<NewV2exRoute>
         title: const Text("V2EX"),
         bottom: TabBar(
           controller: _tabController,
-          tabs: ["最热", "最新"].map((e) => Tab(text: e)).toList(),
+          tabs: ["CNode", "V2EX"].map((e) => Tab(text: e)).toList(),
         ),
       ),
       body: TabBarView(
@@ -1578,7 +1617,33 @@ class NewV2exRouteState extends State<NewV2exRoute>
           ),
           Container(
             alignment: Alignment.center,
-            child: const Text("v2ex不支持跨域，还在处理中"),
+            child: FutureBuilder(
+              future: () async {
+                return _dio.get("https://www.v2ex.com/api/topics/latest.json");
+              }(),
+              builder: (context, AsyncSnapshot snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  Response resp = snapshot.data;
+                  //发生错误
+                  if (snapshot.hasError) {
+                    return Text(snapshot.error.toString());
+                  }
+
+                  return ListView(
+                    children: resp.data.map<Widget>((e) {
+                      return TextButton(
+                          onPressed: () {
+                            var url = e["url"];
+                            launch(url);
+                          },
+                          child: Text(e["title"]));
+                    }).toList(),
+                  );
+                } else {
+                  return const CircularProgressIndicator();
+                }
+              },
+            ),
           )
         ],
       ),
@@ -1919,26 +1984,5 @@ class NewBatteryRouteState extends State<NewBatteryRoute> {
     // TODO: implement dispose
     super.dispose();
     _batteryStateSubscription?.cancel();
-  }
-}
-
-class NewSoundRoute extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return NewSoundRouteState();
-  }
-}
-
-class NewSoundRouteState extends State<NewSoundRoute> {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("声音演示demo"),
-      ),
-      body: ,
-    );
   }
 }
